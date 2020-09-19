@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestRun(t *testing.T) {
+func TestNoHeader(t *testing.T) {
 	testCases := []struct{
 		in string
 		expected string
@@ -24,7 +24,7 @@ func TestRun(t *testing.T) {
 			in := bytes.NewBufferString(tt.in)
 			out := bytes.Buffer{}
 
-			if err := run(in, &out); err != nil {
+			if err := HeaderLess(in, &out); err != nil {
 				t.Fatal(err)
 			}
 
